@@ -32,6 +32,15 @@ namespace Collections {
             field[2] = new char[3];
 
             field[0][0] = 'X';
+            field[0][1] = '0';
+            field[0][2] = 'X';
+
+            field[1][0] = '0';
+            field[1][1] = '0';
+            field[1][2] = 'X';
+
+            field[2][0] = '0';
+            field[2][1] = 'X';
             field[2][2] = '0';
 
             for (int i = 0; i < field.Length; i++) {
