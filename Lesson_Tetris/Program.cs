@@ -23,11 +23,6 @@ namespace Lesson_Tetris {
 
             Thread.Sleep(500);
             s.Hide();
-            s.Rotate();
-            s.Draw();
-
-            Thread.Sleep(500);
-            s.Hide();
             s.Move(Direction.LEFT);
             s.Draw();
 
@@ -38,17 +33,7 @@ namespace Lesson_Tetris {
 
             Thread.Sleep(500);
             s.Hide();
-            s.Rotate();
-            s.Draw();
-
-            Thread.Sleep(500);
-            s.Hide();
             s.Move(Direction.RIGHT);
-            s.Draw();
-
-            Thread.Sleep(500);
-            s.Hide();
-            s.Rotate();
             s.Draw();
 
             //Figure[] f = new Figure[2];
