@@ -11,5 +11,9 @@ namespace Lesson_Tetris {
             points[2] = new Point(x, y + 1, sym);
             points[3] = new Point(x + 1, y + 1, sym);
         }
+
+        public override void Rotate() {
+            throw new NotImplementedException();
+        }
     }
 }

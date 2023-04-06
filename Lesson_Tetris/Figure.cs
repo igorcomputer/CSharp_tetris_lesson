@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Lesson_Tetris {
-    class Figure {
+    abstract class Figure {
 
         protected Point[] points = new Point[4];
 
@@ -24,5 +24,7 @@ namespace Lesson_Tetris {
                 p.Hide();
             }
         }
+
+        abstract public void Rotate();
     }
 }
