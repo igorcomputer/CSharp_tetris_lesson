@@ -24,5 +24,23 @@ namespace Lesson_Tetris {
             Console.Write(c);
         }
 
+        public void Move(Direction dir) {
+            switch (dir) {
+                case Direction.DOWN:
+                    y += 1;
+                    break;
+                case Direction.LEFT:
+                    x -= 1;
+                    break;
+                case Direction.RIGHT:
+                    x += 1;
+                    break;
+            }
+        }
+
+        public void Hide() {
+            Console.SetCursorPosition(x, y);
+            Console.Write(" ");
+        }
     }
 }
