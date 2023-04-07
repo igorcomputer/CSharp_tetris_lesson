@@ -14,9 +14,11 @@ namespace Lesson_Tetris {
         }
 
         public void Move(Direction dir) {
-            foreach(Point p in points) {
+            Hide();
+            foreach (Point p in points) {
                 p.Move(dir);
             }
+            Draw();
         }
 
         public void Hide() {

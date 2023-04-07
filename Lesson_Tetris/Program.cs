@@ -9,27 +9,30 @@ namespace Lesson_Tetris {
             Console.SetBufferSize(40, 30);
 
             FigureGenerator generator = new FigureGenerator(20, 0, '*');
-            Figure s;
+            Figure currentFigure = generator.GetNewFigure();
 
             while (true) {
-                DropFigure(out s, generator);
-                s.Draw();
+                if (Console.KeyAvailable) {
+                   var key = Console.ReadKey();
+                    HandleKey(currentFigure, key);
+                }
             }
-
-            Console.ReadLine();
 
         }
 
-        static void DropFigure(out Figure fig, FigureGenerator generator) {
-            fig = generator.GetNewFigure();
-            fig.Draw();
-            for (int i = 0; i < 15; i++) {
-                fig.Hide();
-                fig.Move(Direction.DOWN);
-                fig.Draw();
-                Thread.Sleep(200);
+        private static void HandleKey(Figure currentFigure, ConsoleKeyInfo key) {
+            switch (key.Key) {
+                case ConsoleKey.LeftArrow:
+                    currentFigure.Move(Direction.LEFT);
+                    break;
+                case ConsoleKey.RightArrow:
+                    currentFigure.Move(Direction.RIGHT);
+                    break;
+                case ConsoleKey.DownArrow:
+                    currentFigure.Move(Direction.DOWN);
+                    break;
+
             }
         }
-
     }
 }
