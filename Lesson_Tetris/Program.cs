@@ -12,20 +12,23 @@ namespace Lesson_Tetris {
             Figure s;
 
             while (true) {
-                s = generator.GetNewFigure();
+                DropFigure(out s, generator);
                 s.Draw();
-
-                for (int i = 0; i < 15; i++) {
-                    s.Hide();
-                    s.Move(Direction.DOWN);
-                    s.Draw();
-                    Thread.Sleep(200);
-                }
-
             }
 
             Console.ReadLine();
 
+        }
+
+        static void DropFigure(out Figure fig, FigureGenerator generator) {
+            fig = generator.GetNewFigure();
+            fig.Draw();
+            for (int i = 0; i < 15; i++) {
+                fig.Hide();
+                fig.Move(Direction.DOWN);
+                fig.Draw();
+                Thread.Sleep(200);
+            }
         }
 
     }
