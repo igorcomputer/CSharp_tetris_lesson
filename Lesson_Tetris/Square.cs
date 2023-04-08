@@ -13,8 +13,8 @@ namespace Lesson_Tetris {
             Draw();
         }
 
-        public override void Rotate() {
-            throw new NotImplementedException();
+        public override void Rotate(Point[] pList) {
+            
         }
     }
 }

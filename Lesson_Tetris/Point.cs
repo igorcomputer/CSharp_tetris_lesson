@@ -42,6 +42,7 @@ namespace Lesson_Tetris {
                 case Direction.RIGHT:
                     x += 1;
                     break;
+
             }
         }
 

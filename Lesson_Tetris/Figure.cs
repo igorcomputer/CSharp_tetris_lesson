@@ -47,6 +47,16 @@ namespace Lesson_Tetris {
             }
         }
 
+        public void TryRotate() {
+            Hide();
+            var clone = Clone();
+            Rotate(clone);
+            if (VerifyPosition(clone)) {
+                points = clone;
+            }
+            Draw();
+        }
+
         //public void Move(Direction dir) {
         //    Hide();
         //    foreach (Point p in points) {
@@ -61,7 +71,7 @@ namespace Lesson_Tetris {
             }
         }
 
-        abstract public void Rotate();
+        abstract public void Rotate(Point[] pList);
 
     }
 }
