@@ -5,8 +5,11 @@ namespace Lesson_Tetris {
     class Program {
         static void Main(string[] args) {
 
-            Console.SetWindowSize(Field.WIDTH, Field.HEIGHT);
-            Console.SetBufferSize(Field.WIDTH, Field.HEIGHT);
+            //Field.Width = 20; 
+            //Field.Height = 30;
+
+            Console.WriteLine(Field.Width);
+
 
             FigureGenerator generator = new FigureGenerator(20, 0, '*');
             Figure currentFigure = generator.GetNewFigure();
