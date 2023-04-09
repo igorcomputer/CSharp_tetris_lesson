@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lesson_Tetris {
-    class Stick : Figure {
-
-        public Stick(int x, int y, char sym) {
+namespace Lesson_Tetris
+{
+    class Stick : Figure
+    {
+        public Stick(int x, int y, char sym)
+        {
             points[0] = new Point(x, y, sym);
             points[1] = new Point(x, y + 1, sym);
             points[2] = new Point(x, y + 2, sym);
@@ -13,32 +15,37 @@ namespace Lesson_Tetris {
             Draw();
         }
 
-        public override void Rotate(Point[] pList) {
+        public override void Rotate(Point[] pList)
+        {
             // vertical orientation
-            if (pList[0].X == pList[1].X) {
+            if (pList[0].X == pList[1].X)
+            {
                 SetHorizontal(pList);
             }
             // horizontal orientation
-            else if (pList[0].Y == pList[1].Y) {
+            else if (pList[0].Y == pList[1].Y)
+            {
                 SetVertical(pList);
             }
         }
 
-        private void SetVertical(Point[] pList) {
-            for (int i = 0; i < pList.Length; i++) {
+        private void SetVertical(Point[] pList)
+        {
+            for (int i = 0; i < pList.Length; i++)
+            {
                 pList[i].X = pList[0].X;
                 pList[i].Y = pList[0].Y + i;
 
             }
         }
 
-        private void SetHorizontal(Point[] pList) {
-            for (int i = 0; i < pList.Length; i++) {
+        private void SetHorizontal(Point[] pList)
+        {
+            for (int i = 0; i < pList.Length; i++)
+            {
                 pList[i].Y = pList[0].Y;
                 pList[i].X = pList[0].X + i;
             }
         }
     }
-
-
 }

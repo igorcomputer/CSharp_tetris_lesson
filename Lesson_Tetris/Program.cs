@@ -1,40 +1,45 @@
 ﻿using System;
 using System.Threading;
 
-namespace Lesson_Tetris {
-    class Program {
-        static void Main(string[] args) {
-
-            Field.Width = 40; 
-            Field.Height = 30; 
+namespace Lesson_Tetris
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Field.Width = 40;
+            Field.Height = 30;
 
             FigureGenerator generator = new FigureGenerator(20, 0, '*');
             Figure currentFigure = generator.GetNewFigure();
 
-            while (true) {
-                if (Console.KeyAvailable) {
-                   var key = Console.ReadKey();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey();
                     HandleKey(currentFigure, key);
                 }
             }
 
         }
 
-        private static void HandleKey(Figure currentFigure, ConsoleKeyInfo key) {
-            switch (key.Key) {
+        private static void HandleKey(Figure currentFigure, ConsoleKeyInfo key)
+        {
+            switch (key.Key)
+            {
                 case ConsoleKey.LeftArrow:
-                    currentFigure.TryMove(Direction.LEFT);
-                    break;
+                currentFigure.TryMove(Direction.LEFT);
+                break;
                 case ConsoleKey.RightArrow:
-                    currentFigure.TryMove(Direction.RIGHT);
-                    break;
+                currentFigure.TryMove(Direction.RIGHT);
+                break;
                 case ConsoleKey.DownArrow:
-                    currentFigure.TryMove(Direction.DOWN);
-                    break;
+                currentFigure.TryMove(Direction.DOWN);
+                break;
                 case ConsoleKey.Spacebar:
-                    currentFigure.TryRotate();
-                    break;
-
+                currentFigure.TryRotate();
+                break;
             }
         }
     }

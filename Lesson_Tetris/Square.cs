@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lesson_Tetris {
-    class Square: Figure {
-
-        public Square(int x, int y, char sym) {
+namespace Lesson_Tetris
+{
+    class Square : Figure
+    {
+        public Square(int x, int y, char sym)
+        {
             points[0] = new Point(x, y, sym);
             points[1] = new Point(x + 1, y, sym);
             points[2] = new Point(x, y + 1, sym);
@@ -13,8 +15,9 @@ namespace Lesson_Tetris {
             Draw();
         }
 
-        public override void Rotate(Point[] pList) {
-            
+        public override void Rotate(Point[] pList)
+        {
+
         }
     }
 }
