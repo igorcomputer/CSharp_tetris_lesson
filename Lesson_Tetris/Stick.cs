@@ -15,27 +15,27 @@ namespace Lesson_Tetris {
 
         public override void Rotate(Point[] pList) {
             // vertical orientation
-            if (pList[0].x == pList[1].x) {
+            if (pList[0].X == pList[1].X) {
                 SetHorizontal(pList);
             }
             // horizontal orientation
-            else if (pList[0].y == pList[1].y) {
+            else if (pList[0].Y == pList[1].Y) {
                 SetVertical(pList);
             }
         }
 
         private void SetVertical(Point[] pList) {
             for (int i = 0; i < pList.Length; i++) {
-                pList[i].x = pList[0].x;
-                pList[i].y = pList[0].y + i;
+                pList[i].X = pList[0].X;
+                pList[i].Y = pList[0].Y + i;
 
             }
         }
 
         private void SetHorizontal(Point[] pList) {
             for (int i = 0; i < pList.Length; i++) {
-                pList[i].y = pList[0].y;
-                pList[i].x = pList[0].x + i;
+                pList[i].Y = pList[0].Y;
+                pList[i].X = pList[0].X + i;
             }
         }
     }

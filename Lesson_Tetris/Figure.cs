@@ -27,7 +27,7 @@ namespace Lesson_Tetris {
 
         private bool VerifyPosition(Point[] clonePoints) {
             foreach(var p in clonePoints) {
-                if (p.x < 0 || p.y < 0 || p.x >= Field.Width || p.y >= Field.Height)
+                if (p.X < 0 || p.Y < 0 || p.X >= Field.Width || p.Y >= Field.Height)
                     return false;
             }
             return true;
