@@ -14,8 +14,8 @@ namespace Lesson_Tetris {
             }
             set {
                 _width = value;
-                Console.SetWindowSize(_width, _height);
-                Console.SetBufferSize(_width, _height);
+                Console.SetWindowSize(value, Field.Height);
+                Console.SetBufferSize(value, Field.Height);
             }
         }
 
@@ -25,8 +25,8 @@ namespace Lesson_Tetris {
             }
             set {
                 _height = value;
-                Console.SetWindowSize(_width, _height);
-                Console.SetBufferSize(_width, _height);
+                Console.SetWindowSize(Field.Width, value);
+                Console.SetBufferSize(Field.Width, value);
             }
         }
 
