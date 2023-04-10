@@ -9,6 +9,8 @@ namespace Lesson_Tetris
         private static int _width = 40;
         private static int _height = 30;
 
+        private static bool[][] _heap;
+
         public static int Width
         {
             get
@@ -34,6 +36,28 @@ namespace Lesson_Tetris
                 _height = value;
                 Console.SetWindowSize(_width, _height);
                 Console.SetBufferSize(_width, _height);
+            }
+        }
+
+        static Field()
+        {
+            _heap = new bool[Height][];
+            for (int i = 0; i < Height; i++)
+            {
+                _heap[i] = new bool[Width];
+            }
+        }
+
+        public static bool CheckStrike(Point p)
+        {
+            return _heap[p.Y][p.X];
+        }
+
+        public static void AddFigure(Figure fig)
+        {
+            foreach (var p in fig.Points)
+            {
+                _heap[p.Y][p.X] = true;
             }
         }
 

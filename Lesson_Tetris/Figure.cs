@@ -7,10 +7,10 @@ namespace Lesson_Tetris {
 
         const int LENGHT = 4;
 
-        protected Point[] points = new Point[LENGHT];
+        public Point[] Points = new Point[LENGHT];
 
         public void Draw() {
-            foreach (Point p in points) {
+            foreach (Point p in Points) {
                 p.Draw();
             }
         }
@@ -20,7 +20,7 @@ namespace Lesson_Tetris {
             var clone = Clone();
             Move(clone, dir);
             if (VerifyPosition(clone)) {
-                points = clone;
+                Points = clone;
             }
             Draw();
         }
@@ -36,7 +36,7 @@ namespace Lesson_Tetris {
         private Point[] Clone() {
             var newPoints = new Point[LENGHT];
             for (int i = 0; i < 4; i++) {
-                newPoints[i] = new Point(points[i]);
+                newPoints[i] = new Point(Points[i]);
             }
             return newPoints;
         }
@@ -52,21 +52,13 @@ namespace Lesson_Tetris {
             var clone = Clone();
             Rotate(clone);
             if (VerifyPosition(clone)) {
-                points = clone;
+                Points = clone;
             }
             Draw();
         }
 
-        //public void Move(Direction dir) {
-        //    Hide();
-        //    foreach (Point p in points) {
-        //        p.Move(dir);
-        //    }
-        //    Draw();
-        //}
-
         public void Hide() {
-            foreach (Point p in points) {
+            foreach (Point p in Points) {
                 p.Hide();
             }
         }
