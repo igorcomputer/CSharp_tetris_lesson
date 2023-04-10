@@ -42,6 +42,7 @@ namespace Lesson_Tetris
                 if (currentFigure.IsOnTop())
                 {
                     WriteGameOver();
+                    timer.Elapsed -= OnTimerEvent;
                     return true;
                 } 
                 else
