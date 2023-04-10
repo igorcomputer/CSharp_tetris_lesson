@@ -51,6 +51,11 @@ namespace Lesson_Tetris {
             return newPoints;
         }
 
+        public bool IsOnTop()
+        {
+            return Points[0].Y == 0;
+        }
+
         private void Move(Point[] clonePoints, Direction dir) {
             foreach(var p in clonePoints) {
                 p.Move(dir);
