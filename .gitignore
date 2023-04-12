@@ -2,3 +2,10 @@
 /Enums/obj/
 /Randomizer/bin/
 /Randomizer/obj/
+/Tetris_GUI/Properties/
+/Tetris_GUI/obj/
+/Tetris_GUI/App.config
+/Tetris_GUI/Tetris_GUI.csproj
+/Collections/obj/Debug/netcoreapp3.1/Collections.csproj.AssemblyReference.cache
+/Tetris_GUI/bin/
+/Lesson_Tetris/Lesson_Tetris.sln
