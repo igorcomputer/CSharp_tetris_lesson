@@ -15,36 +15,36 @@ namespace Lesson_Tetris
             Draw();
         }
 
-        public override void Rotate(Point[] pList)
+        public override void Rotate()
         {
             // vertical orientation
-            if (pList[0].X == pList[1].X)
+            if (Points[0].X == Points[1].X)
             {
-                SetHorizontal(pList);
+                SetHorizontal();
             }
             // horizontal orientation
-            else if (pList[0].Y == pList[1].Y)
+            else if (Points[0].Y == Points[1].Y)
             {
-                SetVertical(pList);
+                SetVertical();
             }
         }
 
-        private void SetVertical(Point[] pList)
+        private void SetVertical()
         {
-            for (int i = 0; i < pList.Length; i++)
+            for (int i = 0; i < Points.Length; i++)
             {
-                pList[i].X = pList[0].X;
-                pList[i].Y = pList[0].Y + i;
+                Points[i].X = Points[0].X;
+                Points[i].Y = Points[0].Y + i;
 
             }
         }
 
-        private void SetHorizontal(Point[] pList)
+        private void SetHorizontal()
         {
-            for (int i = 0; i < pList.Length; i++)
+            for (int i = 0; i < Points.Length; i++)
             {
-                pList[i].Y = pList[0].Y;
-                pList[i].X = pList[0].X + i;
+                Points[i].Y = Points[0].Y;
+                Points[i].X = Points[0].X + i;
             }
         }
     }

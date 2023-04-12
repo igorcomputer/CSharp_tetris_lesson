@@ -17,19 +17,17 @@ namespace Lesson_Tetris {
 
         public Result TryMove(Direction dir) {
             Hide();
-            var clone = Clone();
-            Move(clone, dir);
-            var result = VerifyPosition(clone);
-
-            if (result == Result.SUCCESS) {
-                Points = clone;
+            Move(dir);
+            var result = VerifyPosition();
+            if (result != Result.SUCCESS) {
+                Move(Reverse(dir));
             }
             Draw();
             return result;
         }
 
-        private Result VerifyPosition(Point[] clonePoints) {
-            foreach(var p in clonePoints) {
+        private Result VerifyPosition() {
+            foreach(var p in Points) {
 
                 if (p.Y >= Field.Height)
                     return Result.DOWN_BORDER_STRIKE;
@@ -43,32 +41,23 @@ namespace Lesson_Tetris {
             return Result.SUCCESS;
         }
 
-        private Point[] Clone() {
-            var newPoints = new Point[LENGHT];
-            for (int i = 0; i < 4; i++) {
-                newPoints[i] = new Point(Points[i]);
-            }
-            return newPoints;
-        }
-
         public bool IsOnTop()
         {
             return Points[0].Y == 0;
         }
 
-        private void Move(Point[] clonePoints, Direction dir) {
-            foreach(var p in clonePoints) {
+        private void Move(Direction dir) {
+            foreach(var p in Points) {
                 p.Move(dir);
             }
         }
 
         public Result TryRotate() {
             Hide();
-            var clone = Clone();
-            Rotate(clone);
-            var result = VerifyPosition(clone);
-            if (result == Result.SUCCESS) {
-                Points = clone;
+            Rotate();
+            var result = VerifyPosition();
+            if (result != Result.SUCCESS) {
+                Rotate();
             }
             Draw();
             return result;
@@ -80,7 +69,23 @@ namespace Lesson_Tetris {
             }
         }
 
-        abstract public void Rotate(Point[] pList);
+        abstract public void Rotate();
+
+        private Direction Reverse(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction.LEFT:
+                    return Direction.RIGHT;
+                case Direction.RIGHT:
+                    return Direction.LEFT;
+                case Direction.UP:
+                    return Direction.DOWN;
+                case Direction.DOWN:
+                    return Direction.UP;
+            }
+            return dir;
+        }
 
     }
 }

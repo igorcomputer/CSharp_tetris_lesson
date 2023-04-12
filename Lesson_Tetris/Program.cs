@@ -87,10 +87,12 @@ namespace Lesson_Tetris
 
         private static void OnTimerEvent(object sender, ElapsedEventArgs e)
         {
+            
             Monitor.Enter(_lockObject);
             var result = currentFigure.TryMove(Direction.DOWN);
             ProcessResult(result, ref currentFigure);
             Monitor.Exit(_lockObject);
+            
         }
     }
 }

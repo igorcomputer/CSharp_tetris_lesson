@@ -40,16 +40,18 @@ namespace Lesson_Tetris
         {
             switch (dir)
             {
+                case Direction.UP:
+                    Y -= 1;
+                    break;
                 case Direction.DOWN:
-                Y += 1;
-                break;
+                    Y += 1;
+                    break;
                 case Direction.LEFT:
-                X -= 1;
-                break;
+                    X -= 1;
+                    break;
                 case Direction.RIGHT:
-                X += 1;
-                break;
-
+                    X += 1;
+                    break;
             }
         }
 
