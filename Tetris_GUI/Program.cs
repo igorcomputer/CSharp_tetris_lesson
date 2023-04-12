@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Timers;
+using Microsoft.SmallBasic.Library;
 
 namespace Lesson_Tetris
 {
@@ -21,18 +22,35 @@ namespace Lesson_Tetris
             generator = new FigureGenerator(Field.Width / 2, 0);
             currentFigure = generator.GetNewFigure();
 
-            SetTimer();
+            GraphicsWindow.KeyDown += GraphicsWindow_KeyDown;
 
-            while (true)
+            GraphicsWindow.BrushColor = "Red";
+            GraphicsWindow.FontSize = 20;
+            GraphicsWindow.DrawText(10, 10, "GAME OVER");
+
+            //SetTimer();
+
+            //while (true)
+            //{
+            //    if (Console.KeyAvailable)
+            //    {
+            //        var key = Console.ReadKey();
+            //        Monitor.Enter(_lockObject);
+            //        var result = HandleKey(currentFigure, key.Key);
+            //        ProcessResult(result, ref currentFigure);
+            //        Monitor.Exit(_lockObject);
+            //    }
+            //}
+        }
+
+        private static void GraphicsWindow_KeyDown()
+        {
+            String lastkey = (String)GraphicsWindow.LastKey;
+            switch (lastkey)
             {
-                if (Console.KeyAvailable)
-                {
-                    var key = Console.ReadKey();
-                    Monitor.Enter(_lockObject);
-                    var result = HandleKey(currentFigure, key.Key);
-                    ProcessResult(result, ref currentFigure);
-                    Monitor.Exit(_lockObject);
-                }
+                case "Left":
+                    currentFigure.TryMove(Direction.LEFT);
+                    break;
             }
         }
 
@@ -48,8 +66,7 @@ namespace Lesson_Tetris
                     DrawerProvider.Drawer.WriteGameOver();
                     timer.Elapsed -= OnTimerEvent;
                     return true;
-                } 
-                else
+                } else
                 {
                     currentFigure = generator.GetNewFigure();
                     return false;
@@ -85,12 +102,12 @@ namespace Lesson_Tetris
 
         private static void OnTimerEvent(object sender, ElapsedEventArgs e)
         {
-            
+
             Monitor.Enter(_lockObject);
             var result = currentFigure.TryMove(Direction.DOWN);
             ProcessResult(result, ref currentFigure);
             Monitor.Exit(_lockObject);
-            
+
         }
     }
 }
