@@ -16,13 +16,9 @@ namespace Lesson_Tetris
         static void Main(string[] args)
         {
 
-            Field.Width = 20;
-            Field.Height = 20;
+            DrawerProvider.Drawer.InitField();
 
-            
-            Test();
-
-            generator = new FigureGenerator(Field.Width / 2, 0, '*');
+            generator = new FigureGenerator(Field.Width / 2, 0);
             currentFigure = generator.GetNewFigure();
             SetTimer();
 
@@ -39,11 +35,6 @@ namespace Lesson_Tetris
             }
         }
 
-        private static void Test()
-        {
-            DrawerProvider.Drawer.DrawPoint(5, 6);
-        }
-
         private static bool ProcessResult(Result result, ref Figure currentFigure)
         {
             if (result == Result.HEAP_STRIKE || result == Result.DOWN_BORDER_STRIKE)
@@ -53,7 +44,7 @@ namespace Lesson_Tetris
 
                 if (currentFigure.IsOnTop())
                 {
-                    WriteGameOver();
+                    DrawerProvider.Drawer.WriteGameOver();
                     timer.Elapsed -= OnTimerEvent;
                     return true;
                 } 
@@ -65,12 +56,6 @@ namespace Lesson_Tetris
 
             } else
                 return false;
-        }
-
-        private static void WriteGameOver()
-        {
-            Console.SetCursorPosition(Field.Width / 2 - 8, Field.Height / 2);
-            Console.WriteLine("G A M E  O V E R");
         }
 
         private static Result HandleKey(Figure f, ConsoleKey key)

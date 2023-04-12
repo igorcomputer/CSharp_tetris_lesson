@@ -8,13 +8,11 @@ namespace Lesson_Tetris
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public char C { get; set; }
 
-        public Point(int a, int b, char sym)
+        public Point(int a, int b)
         {
             X = a;
             Y = b;
-            C = sym;
         }
 
         public Point()
@@ -26,14 +24,11 @@ namespace Lesson_Tetris
         {
             X = p.X;
             Y = p.Y;
-            C = p.C;
         }
 
         public void Draw()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(C);
-            Console.SetCursorPosition(0, 0);
+            DrawerProvider.Drawer.DrawPoint(X, Y);  
         }
 
         public void Move(Direction dir)
@@ -57,8 +52,7 @@ namespace Lesson_Tetris
 
         public void Hide()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(" ");
+            DrawerProvider.Drawer.HidePoint(X, Y);
         }
     }
 }
