@@ -13,6 +13,7 @@ namespace Lesson_Tetris
 
         static FigureGenerator generator;
         static Figure currentFigure;
+        static bool gameOver = false;
 
         static void Main(string[] args)
         {
@@ -26,21 +27,6 @@ namespace Lesson_Tetris
 
             GraphicsWindow.KeyDown += GraphicsWindow_KeyDown;
 
-            
-
-            
-
-            //while (true)
-            //{
-            //    if (Console.KeyAvailable)
-            //    {
-            //        var key = Console.ReadKey();
-            //        Monitor.Enter(_lockObject);
-            //        var result = HandleKey(currentFigure, key.Key);
-            //        ProcessResult(result, ref currentFigure);
-            //        Monitor.Exit(_lockObject);
-            //    }
-            //}
         }
 
         private static void GraphicsWindow_KeyDown()
@@ -51,16 +37,8 @@ namespace Lesson_Tetris
 
             if(GraphicsWindow.LastKey == "Down")
             {
-                var gameOver = ProcessResult(result, ref currentFigure);
+                gameOver = ProcessResult(result, ref currentFigure);
             }
-
-            //String lastkey = (String)GraphicsWindow.LastKey;
-            //switch (lastkey)
-            //{
-            //    case "Left":
-            //        currentFigure.TryMove(Direction.LEFT);
-            //        break;
-            //}
 
             Monitor.Exit(_lockObject);
         }
@@ -113,10 +91,11 @@ namespace Lesson_Tetris
 
         private static void OnTimerEvent(object sender, ElapsedEventArgs e)
         {
-
             Monitor.Enter(_lockObject);
             var result = currentFigure.TryMove(Direction.DOWN);
-            ProcessResult(result, ref currentFigure);
+            gameOver = ProcessResult(result, ref currentFigure);
+            if (gameOver)
+                timer.Stop();
             Monitor.Exit(_lockObject);
 
         }
