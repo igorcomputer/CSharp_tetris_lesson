@@ -15,6 +15,14 @@ namespace Lesson_Tetris
 
         static void Main(string[] args)
         {
+
+            Field.Width = 20;
+            Field.Height = 20;
+
+            // IDrawer drawer = new ConsoleDrawer2(); 
+            IDrawer drawer = new ConsoleDrawer();
+            Test(drawer);
+
             generator = new FigureGenerator(Field.Width / 2, 0, '*');
             currentFigure = generator.GetNewFigure();
             SetTimer();
@@ -30,6 +38,11 @@ namespace Lesson_Tetris
                     Monitor.Exit(_lockObject);
                 }
             }
+        }
+
+        private static void Test(IDrawer drawer)
+        {
+            drawer.DrawPoint(5, 6);
         }
 
         private static bool ProcessResult(Result result, ref Figure currentFigure)
