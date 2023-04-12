@@ -19,9 +19,8 @@ namespace Lesson_Tetris
             Field.Width = 20;
             Field.Height = 20;
 
-            // IDrawer drawer = new ConsoleDrawer2(); 
-            IDrawer drawer = new ConsoleDrawer();
-            Test(drawer);
+            
+            Test();
 
             generator = new FigureGenerator(Field.Width / 2, 0, '*');
             currentFigure = generator.GetNewFigure();
@@ -40,9 +39,9 @@ namespace Lesson_Tetris
             }
         }
 
-        private static void Test(IDrawer drawer)
+        private static void Test()
         {
-            drawer.DrawPoint(5, 6);
+            DrawerProvider.Drawer.DrawPoint(5, 6);
         }
 
         private static bool ProcessResult(Result result, ref Figure currentFigure)
