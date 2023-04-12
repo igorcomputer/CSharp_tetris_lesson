@@ -7,7 +7,7 @@ namespace Lesson_Tetris
     static class Field
     {
         private static int _width = 10;
-        private static int _height = 10;
+        private static int _height = 15;
 
         private static bool[][] _heap;
 
